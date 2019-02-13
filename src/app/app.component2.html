@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<agm-map [latitude]="lat" [longitude]="lng">
+	<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+<hr>
+<ul>
+	<ng-container *ngFor="let place of places">
+		<li *ngIf="place.active">{{place.nombre}}</li>
+	</ng-container>
+</ul>
+<ul>
+	<ng-container *ngFor="let place of places let i = index" [ngSwitch]="place.cercania">
+		<a count-clicks [ngStyle]="{'display': 'block'}">
+			<li [ngStyle]="{'color': (place.active) ? 'black' : 'gray'}" [ngClass]="{'numero-par': (i+1)%2 !== 0}" [highlight]="place.plan">
+				{{place.nombre}} - 
+				<span *ngSwitchCase="1" [ngStyle]="{color: 'green'}">Muy Cercano</span>
+				<span *ngSwitchCase="2" [ngStyle]="{color: 'black'}">Cercano</span>
+				<span *ngSwitchCase="3" [ngStyle]="{color: 'red'}">Lejano</span>
+			</li>
+		</a>
+	</ng-container>
+</ul>

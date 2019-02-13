@@ -1,0 +1,18 @@
+<nav class="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a routerLink="/lugares">Lugares</a></li>
+		<li class="breadcrumb-item">{{place.name}}</li>
+	</ol>
+</nav>
+<div class="container">
+	<h1>{{place.name}}</h1>
+	<hr>
+	<small>{{place.distance}} km</small>
+	<br>
+	<div class="card bg-light">
+		<div class="card-body">
+			<p>{{place.description}}</p>
+			<b>Suscripción: {{place.plan}}</b>
+		</div>
+	</div>
+</div>

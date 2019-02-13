@@ -1,0 +1,29 @@
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="10">
+	<agm-marker *ngFor="let place of places" [latitude]="place.lat" [longitude]="place.lng"></agm-marker>
+</agm-map>
+<hr class="list-group">
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h2>Lugares cercanos</h2>
+			<a class="btn btn-primary" routerLink="/crear/nuevo">Crear nuevo negocio</a>	
+			<ul>
+				<ng-container *ngFor="let place of places">
+					<a routerLink="/crear/{{place.id}}">
+						<li class="list-group-item">
+							<h3>{{place.name}}</h3>
+							<small>Creado: {{place.id | date:'mediumTime' | uppercase}}</small>
+							<p>{{ place.description }}</p>
+						</li>
+					</a>
+				</ng-container>
+			</ul>
+			<div class="alert alert-danger" role="alert" [hidden]="alert">
+				Lo sentimos, tu consulta no se pudo procesar. Vuelve más tarde.
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h2>Destacados</h2>
+		</div>
+	</div>
+</div>
